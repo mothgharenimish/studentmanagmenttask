@@ -93,8 +93,6 @@ class _HomeState extends State<Home> {
 
     await prefs.remove("isLogin");
 
-    await prefs.clear();
-
     print("Logout is successfull");
 
     Navigator.pushReplacement(
@@ -166,12 +164,10 @@ class _HomeState extends State<Home> {
 
     final courseController = TextEditingController();
 
-    // RESET IMAGE
     if (!isEdit) {
       image = null;
     }
 
-    // EDIT DATA
     if (isEdit && index != null) {
       nameController.text = studentdata[index].name;
 

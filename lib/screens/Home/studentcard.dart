@@ -46,7 +46,7 @@ const Studentcard({
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(studentdata.name,style: TextStyle(fontSize: 19,fontWeight: FontWeight.bold,color: Colors.black),),
+                Text(studentdata.name,style: TextStyle(fontSize: 15,fontWeight: FontWeight.bold,color: Colors.black),),
                 SizedBox(height: 5),
                 Text("Age: ${studentdata.age}",style: TextStyle(fontSize: 15,fontWeight: FontWeight.w800,color: Colors.grey),),
                 SizedBox(height: 5),
@@ -57,7 +57,7 @@ const Studentcard({
                     GestureDetector(
                       onTap: deleteonTap,
                       child: Container(
-                        width: 120,
+                        width: 90,
                           height: 37,
                           padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 6),
                           decoration: BoxDecoration(
@@ -71,7 +71,7 @@ const Studentcard({
                     GestureDetector(
                       onTap: editonTap,
                       child: Container(
-                          width: 120,
+                          width: 90,
                           height: 37,
                           padding: const EdgeInsets.symmetric(horizontal: 15,vertical: 6),
                           decoration: BoxDecoration(
