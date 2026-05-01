@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:studentmanagment/model/studentmodel.dart';
 
@@ -35,8 +37,8 @@ const Studentcard({
           children: [
             CircleAvatar(
               radius: 60,
-              backgroundImage: AssetImage(
-                studentdata.studentimage,
+              backgroundImage: FileImage(
+                File(studentdata.studentimage),
               ),
             ),
             SizedBox(width: 12),

@@ -20,13 +20,13 @@ class _HomeState extends State<Home> {
   File? image;
 
   @override
-  void initState() {
+  void initState()  {
     super.initState();
 
-    loadStudentData();
+   loadStudentData();
+
   }
 
-  // IMAGE PICKER
   Future<void> getImage(ImageSource source) async {
     final pickedImage = await ImagePicker().pickImage(source: source);
 
@@ -91,6 +91,10 @@ class _HomeState extends State<Home> {
 
     await prefs.remove("email");
 
+    await prefs.remove("isLogin");
+
+    await prefs.clear();
+
     print("Logout is successfull");
 
     Navigator.pushReplacement(
@@ -103,6 +107,8 @@ class _HomeState extends State<Home> {
     );
 
   }
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -192,7 +198,6 @@ class _HomeState extends State<Home> {
                   mainAxisSize: MainAxisSize.min,
 
                   children: [
-                    // IMAGE PICKER
                     GestureDetector(
                       onTap: () async {
                         final pickedImage = await ImagePicker().pickImage(
@@ -221,7 +226,6 @@ class _HomeState extends State<Home> {
 
                     const SizedBox(height: 20),
 
-                    // NAME
                     TextField(
                       controller: nameController,
 
@@ -234,7 +238,6 @@ class _HomeState extends State<Home> {
 
                     const SizedBox(height: 15),
 
-                    // AGE
                     TextField(
                       controller: ageController,
 
@@ -249,7 +252,6 @@ class _HomeState extends State<Home> {
 
                     const SizedBox(height: 15),
 
-                    // COURSE
                     TextField(
                       controller: courseController,
 
@@ -276,7 +278,6 @@ class _HomeState extends State<Home> {
                   onPressed: () async {
                     setState(() {
                       if (isEdit && index != null) {
-                        // UPDATE
                         studentdata[index] = Student(
                           studentimage: image?.path ?? "",
 
@@ -287,7 +288,6 @@ class _HomeState extends State<Home> {
                           course: courseController.text,
                         );
                       } else {
-                        // ADD
                         studentdata.add(
                           Student(
                             studentimage: image?.path ?? "",

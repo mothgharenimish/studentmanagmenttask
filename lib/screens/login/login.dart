@@ -11,6 +11,15 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
 
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    checkLogin();
+  }
+
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
 
@@ -32,6 +41,11 @@ class _LoginState extends State<Login> {
 
       await prefs.setString("email", emailController.text);
 
+      await prefs.setBool(
+        "isLogin",
+        true,
+      );
+
       print("The Email Successfully saved");
 
     } else {
@@ -39,6 +53,29 @@ class _LoginState extends State<Login> {
     }
 
   }
+
+  Future<void> checkLogin() async {
+
+    final prefs =
+    await SharedPreferences.getInstance();
+
+    bool? isLogin =
+    prefs.getBool("isLogin");
+
+    if (isLogin == true) {
+
+      Navigator.pushReplacement(
+
+        context,
+
+        MaterialPageRoute(
+
+          builder: (context) => const Home(),
+        ),
+      );
+    }
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -143,6 +180,7 @@ class _LoginState extends State<Login> {
 
                         if (formKey.currentState!.validate()) {
 
+                          await SaveEmail();
                           Navigator.pushReplacement(
                             context,
                             MaterialPageRoute(
